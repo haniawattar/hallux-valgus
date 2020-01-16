@@ -49,7 +49,7 @@ export default function App() {
     setTextInput2(value);
   }
   function call_send_email(){
-    sendEmail(to="haniawattar@gmail.com", subject="Hallux Valgus", body= textInput + "   " + textInput1 + "   " + textInput2)
+    sendEmail(to="haniawattar@gmail.com", subject="Hallux Valgus", body= textInput + "  , " + textInput1 + "  , " + textInput2 + ";")
   }
 
 
