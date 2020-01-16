@@ -6,111 +6,79 @@ import {
    TextInput,
    Button,
    FlatList
-  } from 'react-native';
+} from 'react-native';
 
 export default function App() {
-// first
-  const [textInput, setTextInput] = useState('');
-  const [todos, setTodos] = useState([]);
-//second
-  const [textInput1, setTextInput1] = useState('');
-  const [todos1, setTodos1] = useState([]);
-//third
-  const [textInput2, setTextInput2] = useState('');
-  const [todos2, setTodos2] = useState([]);
 
-  const pressHandler = () => {
-    setTodos([textInput, ...todos]);
-  };
+    const [textInput, setTextInput] = useState('');
+    const [textInput1,setTextInput1] = useState('');
+    const [todos, setTodos] = useState([]);
+    const [todos1, setTodos1]= useState([]);
 
-  const typingHandler = (value) => {
-    setTextInput(value);
-  }
+    const pressHandler = () => {
+        setTodos([textInput, ...todos]);
+    };
 
-  const pressHandler1 = () => {
-    setTodos1([textInput1, ...todos1]);
-  };
+    const pressHandler1 = () => {
+        setTodos1([textInput, ...todos1]);
+    };
+    const typingHandler = (value) => {
+        setTextInput(value);
+    }
+    const typingHandler1 = (value) => {
+        setTextInput1(value);
+    }
 
-  const typingHandler1 = (value) => {
-    setTextInput1(value);
-  }
-
-
-  const pressHandler2 = () => {
-    setTodos2([textInput2, ...todos1]);
-  };
-
-  const typingHandler2 = (value) => {
-    setTextInput2(value);
-  }
-
-
-  return (
-    <View style={styles.container}>
-
-     
-      <Text>First question:</Text>
-      <TextInput
-        onChangeText={typingHandler}
-        value={textInput}
-        style={{ borderWidth: 1, width: 300 }}
+    return (
+      <View style={styles.container}>
+        <Text>Hallux Valgus Feedback</Text>
+        <Text>Wie fuehlen Sie sich heute?</Text>
+        
+        <TextInput
+    onChangeText={typingHandler}
+    value={textInput}
+    style={{ borderWidth: 1, width: 300 }}
       />
-      <Button
-        onPress={pressHandler}
-        title="Save your first answer"
-      />
+    <Button
+    onPress={pressHandler}
+    title="Eingeben"
+    />
 
-      
-      <Text>second question : </Text>
-      <TextInput
-        onChangeText={typingHandler1}
-        value={textInput1}
-        style={{ borderWidth: 1, width: 300 }}
-      />
-      <Button
-        onPress={pressHandler1}
-        title="save your second answer"
-      />
+    <FlatList
+    data={todos}
+    renderItem={todo => <Todo text={todo.item}/>}
+    />
 
-
-      <Text>third question : </Text>
-      <TextInput
-        onChangeText={typingHandler2}
-        value={textInput2}
-        style={{ borderWidth: 1, width: 300 }}
+<Text>Wie weit sind Sie gelaufen?</Text>
+        
+        <TextInput
+    onChangeText={typingHandler1}
+    value={textInput1}
+    style={{ borderWidth: 1, width: 300 }}
       />
-      <Button
-        onPress={pressHandler2}
-        title="save your third answer"
-      />
+    <Button
+    onPress={pressHandler1}
+    title="Eingeben"
+/>
 
 
+<FlatList
+data1={todos1}
+renderItem1={todo1 => <Todo1 text={todo1.item}/>}
+/>
 
-
-      <FlatList
-        data={todos}
-        renderItem={todo => <Todo text={todo.item}/>}
-      />
-      <FlatList
-        data={todos1}
-        renderItem={todo1 => <Todo1 text={todo1.item}/>}
-      />
-      <FlatList
-        data={todos2}
-        renderItem={todo2 => <Todo2 text={todo2.item}/>}
-      />
-    </View>
+</View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        marginTop: 50,
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 
 const Todo = props => (
@@ -118,6 +86,11 @@ const Todo = props => (
     style={{ backgroundColor: "#eaeaea", width: 300, margin: 5 }}>
     <Text>{props.text}</Text>
   </View>
+);
 
-
+const Todo1 = props => (
+  <View 
+    style={{ backgroundColor: "#eaeaea", width: 300, margin: 5 }}>
+    <Text>{props.text}</Text>
+  </View>
 );
