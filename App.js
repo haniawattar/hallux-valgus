@@ -19,6 +19,7 @@ export default function App() {
   const [textInput2, setTextInput2] = useState('');
   const [todos2, setTodos2] = useState([]);
 
+  //first
   const pressHandler = () => {
     setTodos([textInput, ...todos]);
   };
@@ -26,7 +27,7 @@ export default function App() {
   const typingHandler = (value) => {
     setTextInput(value);
   }
-
+//2nd
   const pressHandler1 = () => {
     setTodos1([textInput1, ...todos1]);
   };
@@ -34,10 +35,10 @@ export default function App() {
   const typingHandler1 = (value) => {
     setTextInput1(value);
   }
-
+//third
 
   const pressHandler2 = () => {
-    setTodos2([textInput2, ...todos1]);
+    setTodos2([textInput2, ...todos2]);
   };
 
   const typingHandler2 = (value) => {
@@ -59,6 +60,10 @@ export default function App() {
         onPress={pressHandler}
         title="Save your first answer"
       />
+      <FlatList
+        data={todos}
+        renderItem={todo => <Todo text={todo.item}/>}
+      />
 
       
       <Text>second question : </Text>
@@ -70,6 +75,10 @@ export default function App() {
       <Button
         onPress={pressHandler1}
         title="save your second answer"
+      />
+       <FlatList
+        data={todos1}
+        renderItem={todo => <Todo text={todo.item}/>}
       />
 
 
@@ -84,20 +93,9 @@ export default function App() {
         title="save your third answer"
       />
 
-
-
-
-      <FlatList
-        data={todos}
-        renderItem={todo => <Todo text={todo.item}/>}
-      />
-      <FlatList
-        data={todos1}
-        renderItem={todo1 => <Todo1 text={todo1.item}/>}
-      />
       <FlatList
         data={todos2}
-        renderItem={todo2 => <Todo2 text={todo2.item}/>}
+        renderItem={todo => <Todo text={todo.item}/>}
       />
     </View>
   );
