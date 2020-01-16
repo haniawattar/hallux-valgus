@@ -7,9 +7,9 @@ import { Linking } from 'react-native';
 
 export async function sendEmail(to, subject, body, options = {}) {
     const { cc, bcc } = options;
-
+    //to = "haniawattar@gmail.com"
     let url = `mailto:${to}`;
-
+2
     // Create email link query
     const query = qs.stringify({
         subject: subject,
@@ -30,4 +30,4 @@ export async function sendEmail(to, subject, body, options = {}) {
     }
 
     return Linking.openURL(url);
-}
+};

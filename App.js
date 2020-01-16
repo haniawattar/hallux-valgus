@@ -48,13 +48,10 @@ export default function App() {
   const typingHandler2 = (value) => {
     setTextInput2(value);
   }
-  
-  sendEmail(
-    'haniawattar@gmail.com',
-    'Greeting!',
-    'I think you are fucked up how many letters you get.'
-  ).then(() => {
-console.log('Our email successful provided to device mail ')});
+  function call_send_email(){
+    sendEmail(to="haniawattar@gmail.com", subject="Hallux Valgus", body= textInput + "   " + textInput1 + "   " + textInput2)
+  }
+
 
   return (
     <View style={styles.container}>
@@ -107,13 +104,20 @@ console.log('Our email successful provided to device mail ')});
         data={todos2}
         renderItem={todo => <Todo text={todo.item}/>}
       />
-    
+         
+      <Button
+        onPress={call_send_email}
+        title="send an email with your feedback!"
+      />
 
     </View>
 
     
   );
 }
+
+//(to="haniawattar@gmail.com", subject="hallux valgus feedback", body="my info (this should be automatically filled with the data you entered on the previous page")
+
 
 const styles = StyleSheet.create({
   container: {
