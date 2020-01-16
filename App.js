@@ -7,7 +7,11 @@ import {
    Button,
    FlatList
   } from 'react-native';
+  import { sendEmail } from './send-email';
 
+
+
+//Main
 export default function App() {
 // first
   const [textInput, setTextInput] = useState('');
@@ -44,17 +48,23 @@ export default function App() {
   const typingHandler2 = (value) => {
     setTextInput2(value);
   }
-
+  
+  sendEmail(
+    'haniawattar@gmail.com',
+    'Greeting!',
+    'I think you are fucked up how many letters you get.'
+  ).then(() => {
+console.log('Our email successful provided to device mail ')});
 
   return (
     <View style={styles.container}>
 
      
-      <Text>First question:</Text>
+      <Text>First question: Did you wear the socks (Yes/No)</Text>
       <TextInput
         onChangeText={typingHandler}
         value={textInput}
-        style={{ borderWidth: 1, width: 300 }}
+        style={{ borderWidth: 1, width: 100 }}
       />
       <Button
         onPress={pressHandler}
@@ -66,11 +76,11 @@ export default function App() {
       />
 
       
-      <Text>second question : </Text>
+      <Text>second question : Did you have pain? (Yes/No) </Text>
       <TextInput
         onChangeText={typingHandler1}
         value={textInput1}
-        style={{ borderWidth: 1, width: 300 }}
+        style={{ borderWidth: 1, width: 100 }}
       />
       <Button
         onPress={pressHandler1}
@@ -82,7 +92,7 @@ export default function App() {
       />
 
 
-      <Text>third question : </Text>
+      <Text>third question : How far did you walk? (Meters)</Text>
       <TextInput
         onChangeText={typingHandler2}
         value={textInput2}
@@ -97,7 +107,11 @@ export default function App() {
         data={todos2}
         renderItem={todo => <Todo text={todo.item}/>}
       />
+    
+
     </View>
+
+    
   );
 }
 
